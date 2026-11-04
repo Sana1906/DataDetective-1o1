@@ -84,299 +84,82 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-    }
-
+    /* Global Theme */
     .stApp {
-        background: #f5f7fb;
-        color: #172033;
+        background-color: #090d16;
+        color: #f8fafc;
+        font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Sidebar */
+    /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background: #0b1f3a;
-        border-right: 1px solid #173455;
+        background-color: #05080f;
+        border-right: 1px solid #1e293b;
     }
-
-    section[data-testid="stSidebar"] > div {
-        padding-top: 1.2rem;
-    }
-
     section[data-testid="stSidebar"] * {
-        color: #eef5ff !important;
+        color: #cbd5e1 !important;
     }
 
-    .brand {
-        padding: 6px 8px 20px 8px;
-    }
-
-    .brand-name {
-        font-size: 24px;
-        font-weight: 800;
-        letter-spacing: -0.8px;
-    }
-
-    .brand-name span {
-        color: #4d9cff;
-    }
-
-    .brand-tagline {
-        color: #91a7c2 !important;
-        font-size: 11px;
-        margin-top: 4px;
-        line-height: 1.4;
-    }
-
-    .sidebar-label {
-        color: #7890ad !important;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin: 18px 8px 8px;
-    }
-
-    /* Header */
-    .app-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #ffffff;
-        border: 1px solid #e5eaf1;
-        border-radius: 16px;
-        padding: 18px 22px;
-        margin-bottom: 22px;
-        box-shadow: 0 5px 18px rgba(22, 43, 72, 0.04);
-    }
-
-    .header-title {
-        font-size: 25px;
-        font-weight: 800;
-        color: #10233f;
-        letter-spacing: -0.5px;
-    }
-
-    .header-subtitle {
-        color: #718096;
-        font-size: 12px;
-        margin-top: 4px;
-    }
-
-    .secure-pill {
-        background: #edf7f2;
-        color: #16845a;
-        border: 1px solid #cdebdc;
-        border-radius: 20px;
-        padding: 7px 12px;
-        font-size: 11px;
-        font-weight: 700;
-    }
-
-    /* KPI cards */
-    .kpi-card {
-        background: #ffffff;
-        border: 1px solid #e5eaf1;
-        border-radius: 14px;
-        padding: 18px;
-        min-height: 118px;
-        box-shadow: 0 5px 18px rgba(22, 43, 72, 0.035);
-    }
-
-    .kpi-label {
-        color: #74839a;
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: .4px;
-    }
-
-    .kpi-value {
-        color: #10233f;
-        font-size: 28px;
-        font-weight: 800;
-        margin-top: 8px;
-    }
-
-    .kpi-note {
-        color: #16845a;
-        font-size: 11px;
-        margin-top: 5px;
-        font-weight: 600;
-    }
-
-    /* Section headers */
-    .section-title {
-        color: #10233f;
-        font-size: 19px;
-        font-weight: 750;
-        margin: 22px 0 10px;
-    }
-
-    .section-caption {
-        color: #7a8799;
-        font-size: 12px;
-        margin-bottom: 14px;
-    }
-
-    /* Welcome / empty state */
-    .welcome {
-        background: linear-gradient(135deg, #0b1f3a 0%, #12355e 100%);
-        border-radius: 18px;
-        padding: 30px;
-        color: white;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 28px rgba(11, 31, 58, .16);
-    }
-
-    .welcome h1 {
-        margin: 0 0 8px 0;
-        font-size: 30px;
-        letter-spacing: -0.7px;
-    }
-
-    .welcome p {
-        color: #c5d5e8;
-        font-size: 13px;
-        max-width: 720px;
-        line-height: 1.6;
-    }
-
-    .workflow {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-top: 22px;
-    }
-
-    .workflow-item {
-        background: rgba(255,255,255,.07);
-        border: 1px solid rgba(255,255,255,.10);
-        border-radius: 11px;
-        padding: 14px;
-    }
-
-    .workflow-number {
-        color: #66a9ff;
-        font-weight: 800;
-        font-size: 11px;
-    }
-
-    .workflow-name {
-        font-size: 13px;
-        font-weight: 700;
-        margin-top: 5px;
-    }
-
-    /* Discovery */
-    .discovery-box {
-        border: 1px solid #dbe6f4;
-        border-left: 4px solid #347fdb;
-        padding: 14px 16px;
-        margin-bottom: 10px;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 3px 12px rgba(22,43,72,.035);
-    }
-
-    .anomaly-box {
-        border: 1px solid #f0d8c9;
-        border-left: 4px solid #df784f;
-        padding: 14px 16px;
-        margin-bottom: 10px;
-        background: #fffaf7;
-        border-radius: 10px;
-    }
-
-    /* Health score */
-    .health-panel {
-        background: #ffffff;
-        border: 1px solid #e5eaf1;
-        border-radius: 14px;
-        padding: 20px;
-        box-shadow: 0 5px 18px rgba(22,43,72,.035);
-    }
-
-    .big-score {
-        font-size: 48px;
-        font-weight: 800;
-        line-height: 1;
-        margin-bottom: 8px;
-    }
-
-    /* File uploader */
-    [data-testid="stFileUploader"] {
-        background: #102a4b;
+    /* Enterprise Glass Cards */
+    .enterprise-card {
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.15);
         border-radius: 12px;
-        padding: 4px;
+        padding: 20px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        margin-bottom: 16px;
     }
 
-    [data-testid="stFileUploaderDropzone"] {
-        background: #102a4b !important;
-        border: 1px dashed #4a6f98 !important;
+    /* Metric Values */
+    .metric-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 28px;
+        font-weight: 700;
+        color: #38bdf8;
     }
 
-    /* Tabs */
+    /* Modern Tabs */
     button[data-baseweb="tab"] {
         font-weight: 600;
-        color: #687890;
+        color: #64748b;
+        background-color: transparent;
+        border-radius: 6px;
+        padding: 8px 16px;
     }
-
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: #246fc1;
+        color: #0f172a !important;
+        background-color: #38bdf8 !important;
     }
 
-    /* Buttons */
-    .stButton > button,
-    .stDownloadButton > button {
+    /* Glowing Primary Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        color: white;
+        border: 1px solid #38bdf8;
         border-radius: 8px;
-        font-weight: 650;
-        border: 1px solid #d7e0eb;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        transition: all 0.2s ease;
+    }
+    .stButton > button:hover {
+        background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+        box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
+        border-color: #7dd3fc;
     }
 
-    /* Dataframes */
+    /* Dataframe Overhaul */
     [data-testid="stDataFrame"] {
-        border: 1px solid #e3e9f1;
+        border: 1px solid #1e293b;
         border-radius: 10px;
-        overflow: hidden;
+        background-color: #0f172a;
     }
-
-    /* Footer */
-    .app-footer {
-        text-align: center;
-        color: #91a0b2;
-        font-size: 10px;
-        padding: 25px 0 8px;
-    }
-
-    @media (max-width: 900px) {
-        .workflow {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    #MainMenu, footer {
-        visibility: hidden;
-    }
-    
-    /* Reset workspace button color */
-section[data-testid="stSidebar"] button {
-    background-color: #7C3AED !important;
-    color: #FFFFFF !important;
-    border: 1px solid #A78BFA !important;
-    border-radius: 12px !important;
-}
-
-section[data-testid="stSidebar"] button:hover {
-    background-color: #6D28D9 !important;
-    color: #FFFFFF !important;
-}
     </style>
     """,
     unsafe_allow_html=True,
 )
-
 
 # ----------------------------------------------------------------------
 # Session state
