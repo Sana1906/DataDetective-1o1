@@ -22,10 +22,7 @@ _orig_markdown = st.markdown
 def _markdown(body, *args, **kwargs):
     if kwargs.get("unsafe_allow_html") and isinstance(body, str):
         body = _re.sub(r"(?m)^[ 	]+", "", body)
-        body = _re.sub(r"
-\s*
-", "
-", body)
+        body = _re.sub(r"\s* ", " ", body)
     return _orig_markdown(body, *args, **kwargs)
 
 st.markdown = _markdown
