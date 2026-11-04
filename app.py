@@ -919,18 +919,15 @@ def build_report(df: pd.DataFrame, info: dict, quality: dict, discoveries: list)
     lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     lines.append("=" * 60)
 
-    lines.append("
-1. DATASET OVERVIEW")
+    lines.append("1. DATASET OVERVIEW")
     lines.append(f"Rows: {info['rows']} | Columns: {info['cols']}")
 
-    lines.append("
-2. DATA QUALITY")
+    lines.append("2. DATA QUALITY")
     lines.append(f"Data Health Score: {quality['score']}/100 — {quality['verdict']}")
     lines.append(f"Missing values: {quality['missing_pct']}% of all cells")
     lines.append(f"Duplicate rows: {quality['duplicates']} ({quality['duplicate_pct']}%)")
 
-    lines.append("
-3. UNEXPECTED DISCOVERIES")
+    lines.append("3. UNEXPECTED DISCOVERIES")
     for d in discoveries:
         lines.append(f"  - {d.replace('**', '')}")
 
